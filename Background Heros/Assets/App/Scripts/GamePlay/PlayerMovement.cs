@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpHeight;
+    private bool isOnGround = true;
 
     [Header("Links")]
     [SerializeField] private Rigidbody2D playerRb;
@@ -18,13 +19,41 @@ public class PlayerMovement : MonoBehaviour
     {
         float inputHorizontal = Input.GetAxis("Horizontal");
 
-        playerRb.velocity = (transform.right * movementSpeed * inputHorizontal + transform.up*playerRb.velocity.y) * Time.fixedDeltaTime;
+        playerRb.velocity = new Vector2(inputHorizontal * movementSpeed * Time.fixedDeltaTime, playerRb.velocity.y); 
+        
+        if(inputHorizontal != 0)
+        {
+            transform.localScale = new Vector3 (Mathf.Sign(inputHorizontal), 1, 1);
+        }
+    }
+
+    private void jump()
+    {
+        isOnGround = false;
+        playerRb.AddForce(playerRb.transform.up * jumpHeight,ForceMode2D.Impulse);
+    }
+    
+    private void FixedUpdate()
+    {
+        movement();
     }
 
     private void Update()
     {
-        movement();
+        if (isOnGround && Input.GetKeyDown(KeyCode.Space))
+        {
+            jump();
+        }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isOnGround = true;
+        }
+    }
+
 
 
 

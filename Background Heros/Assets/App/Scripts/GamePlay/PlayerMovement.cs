@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpHeight;
     private bool isOnGround = true;
+    private bool isDead = false;
 
     [Header("Links")]
     [SerializeField] private Rigidbody2D playerRb;
@@ -53,6 +54,18 @@ public class PlayerMovement : MonoBehaviour
             isOnGround = true;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Death"))
+        {
+            isDead = true;
+            playerRb.bodyType = RigidbodyType2D.Static;
+            Debug.Log("Dead!!!");
+        }
+    }
+
+
 
 
 

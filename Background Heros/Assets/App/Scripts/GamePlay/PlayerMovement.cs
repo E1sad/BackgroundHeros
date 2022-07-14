@@ -14,7 +14,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Links")]
     [SerializeField] private Rigidbody2D playerRb;
     
+    public void SetIsDead(bool newDead)
+    {
+        isDead = newDead;
+    }
 
+    public bool GetIsDead()
+    {
+        return isDead;
+    }
 
     private void movement()
     {

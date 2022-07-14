@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2264923004769917734}
   - component: {fileID: 2264923004769917735}
   m_Layer: 0
-  m_Name: Circle - Obstacle
-  m_TagString: Untagged
+  m_Name: Circle - ObstacleForSpawner
+  m_TagString: ObstacleForSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +118,6 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 2
+  m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0

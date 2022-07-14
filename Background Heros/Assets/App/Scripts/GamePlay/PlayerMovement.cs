@@ -19,10 +19,13 @@ public class PlayerMovement : MonoBehaviour
     private void movement()
     {
         float inputHorizontal = Input.GetAxis("Horizontal");
+        if (playerRb.bodyType == RigidbodyType2D.Dynamic)
+        { 
+        playerRb.velocity = new Vector2(inputHorizontal * movementSpeed * Time.fixedDeltaTime, playerRb.velocity.y);
+        }
 
-        playerRb.velocity = new Vector2(inputHorizontal * movementSpeed * Time.fixedDeltaTime, playerRb.velocity.y); 
-        
-        if(inputHorizontal != 0)
+
+        if (inputHorizontal != 0)
         {
             transform.localScale = new Vector3 (Mathf.Sign(inputHorizontal), 1, 1);
         }

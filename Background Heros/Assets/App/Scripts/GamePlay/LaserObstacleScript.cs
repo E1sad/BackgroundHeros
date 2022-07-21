@@ -6,16 +6,17 @@ public class LaserObstacleScript : MonoBehaviour
 {
     [Header("Parameters")]
     [SerializeField] private float distance;
-    private PlayerMovement player;
+    
 
     [Header("Links")]
     [SerializeField] private LineRenderer line;
     [SerializeField] private GameObject laserSource;
+    [SerializeField] private PlayerMovement player;
 
     void LaserHit()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, distance);
-        line.SetPosition(0, transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(laserSource.transform.position, transform.right, distance);
+        line.SetPosition(0, laserSource.transform.position);
         
         
         if(hit.collider != null)
@@ -28,7 +29,7 @@ public class LaserObstacleScript : MonoBehaviour
         }
         else
         {
-            line.SetPosition(1, new Vector2(transform.position.x+distance, transform.position.y));
+            line.SetPosition(1, new Vector2(laserSource.transform.position.x+distance, laserSource.transform.position.y));
         }
     }
 

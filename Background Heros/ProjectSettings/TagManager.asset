@@ -14,9 +14,9 @@ TagManager:
   - UI
   - Ground
   - Death
-  - 
-  - 
-  - 
+  - Border
+  - Player
+  - ActiveObstacles
   - 
   - 
   - 
@@ -41,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2230172385
+    locked: 0
+  - name: PlayerGround
+    uniqueID: 449489535
+    locked: 0
+  - name: Forground
+    uniqueID: 876430081
     locked: 0

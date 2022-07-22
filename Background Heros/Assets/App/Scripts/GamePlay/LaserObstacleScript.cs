@@ -16,13 +16,13 @@ public class LaserObstacleScript : MonoBehaviour
 
     void LaserHit()
     {
-        RaycastHit2D hit = Physics2D.Raycast(laserSource.transform.position, transform.right, distance, playerLayer);
+        RaycastHit2D hit = Physics2D.Raycast(laserSource.transform.position, -Vector2.right, distance, playerLayer); ;
         line.SetPosition(0, laserSource.transform.position);
         
         
         if(hit.collider != null)
         {
-            Debug.Log(hit.collider.gameObject.name);
+        
             line.SetPosition(1, hit.point);
             if (hit.collider.gameObject.CompareTag("Player"))
             {
@@ -32,7 +32,7 @@ public class LaserObstacleScript : MonoBehaviour
         }
         else
         {
-            line.SetPosition(1, new Vector2(laserSource.transform.position.x+distance, laserSource.transform.position.y));
+            line.SetPosition(1, new Vector2(laserSource.transform.position.x-distance, laserSource.transform.position.y));
         }
     }
 

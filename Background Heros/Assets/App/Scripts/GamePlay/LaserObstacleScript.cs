@@ -24,7 +24,7 @@ public class LaserObstacleScript : MonoBehaviour
             line.SetPosition(1, hit.point);
             if (hit.collider.gameObject.CompareTag("Player"))
             {
-                player.SetIsDead(true);
+                player.SetIsDead(true); 
             }
         }
         else

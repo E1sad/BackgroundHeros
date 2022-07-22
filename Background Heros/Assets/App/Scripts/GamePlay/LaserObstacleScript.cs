@@ -12,15 +12,17 @@ public class LaserObstacleScript : MonoBehaviour
     [SerializeField] private LineRenderer line;
     [SerializeField] private GameObject laserSource;
     [SerializeField] private PlayerMovement player;
+    [SerializeField] private LayerMask playerLayer;
 
     void LaserHit()
     {
-        RaycastHit2D hit = Physics2D.Raycast(laserSource.transform.position, transform.right, distance);
+        RaycastHit2D hit = Physics2D.Raycast(laserSource.transform.position, transform.right, distance, playerLayer);
         line.SetPosition(0, laserSource.transform.position);
         
         
         if(hit.collider != null)
         {
+            Debug.Log(hit.collider.gameObject.name);
             line.SetPosition(1, hit.point);
             if (hit.collider.gameObject.CompareTag("Player"))
             {
